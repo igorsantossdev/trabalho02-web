@@ -17,6 +17,12 @@
       "nome": "Caneta esferográfica azul",
       "quantidade": 200,
       "localizacao": "Corredor A, Prateleira 4"
+    },
+    {
+      "nome": "soroban 17 dígitos",
+      "localizacao": "Corredor B, prateleira 2",
+      "quantidade": 5,
+      "id": 4
     }
   ]
 }

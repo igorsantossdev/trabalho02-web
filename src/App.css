@@ -22,3 +22,34 @@ td {
 th {
   font-weight: bold;
 }
+
+.form-produto {
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+  margin-bottom: 24px;
+}
+
+.form-produto label {
+  display: grid;
+  gap: 4px;
+}
+
+.form-produto input {
+  padding: 8px;
+  font: inherit;
+}
+
+.form-produto button {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 4px;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.form-erro {
+  color: #b91c1c;
+}
