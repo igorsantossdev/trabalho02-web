@@ -1,16 +1,111 @@
-# React + Vite
+# Controle de Estoque
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação React para cadastro e listagem de produtos de estoque, consumindo uma API REST.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- Vite
+- json-server 0.17.4
 
-## React Compiler
+## Como rodar
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone o repositório e entre na pasta do projeto:
 
-## Expanding the ESLint configuration
+   ```bash
+   git clone https://github.com/igorsantossdev/trabalho02-devweb.git
+   cd trabalho02-devweb
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+3. Em um terminal, inicie a API:
+
+   ```bash
+   npm run api
+   ```
+
+4. Em outro terminal, inicie a aplicação:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Acesse:
+   - Aplicação: http://localhost:5173
+   - API: http://localhost:3001
+
+## API REST
+
+**URL base:** `http://localhost:3001`  
+**Recurso:** `/produtos`
+
+### Modelo do produto
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `id` | número | Identificador gerado pela API |
+| `nome` | texto | Nome do produto |
+| `quantidade` | número | Quantidade em estoque |
+| `localizacao` | texto | Localização do produto no estoque |
+
+### Rotas
+
+| Método | Rota | Descrição | Body esperado | Status de sucesso |
+|---|---|---|---|---|
+| GET | `/produtos` | Lista os produtos | Nenhum | 200 |
+| GET | `/produtos/:id` | Busca um produto pelo ID | Nenhum | 200 (ou 404 se não existir) |
+| POST | `/produtos` | Cadastra um produto | JSON com `nome`, `quantidade` e `localizacao`, sem `id` | 201 |
+| PUT | `/produtos/:id` | Substitui os dados de um produto | JSON completo com `nome`, `quantidade` e `localizacao` | 200 |
+| PATCH | `/produtos/:id` | Atualiza parcialmente um produto | JSON com um ou mais campos do produto | 200 |
+| DELETE | `/produtos/:id` | Remove um produto | Nenhum | 200 |
+
+### Exemplo de cadastro
+
+Requisição:
+
+```http
+POST /produtos HTTP/1.1
+Host: localhost:3001
+Content-Type: application/json
+
+{
+  "nome": "Teclado USB",
+  "quantidade": 15,
+  "localizacao": "Corredor B, Prateleira 3"
+}
+```
+
+Resposta de sucesso:
+
+```json
+{
+  "nome": "Teclado USB",
+  "quantidade": 15,
+  "localizacao": "Corredor B, Prateleira 3",
+  "id": 4
+}
+```
+
+O valor de `id` da resposta é atribuído pela API.
+
+### Rotas usadas pela interface
+
+Atualmente, a interface React usa `GET /produtos` para carregar a lista e `POST /produtos` para cadastrar produtos. As demais rotas são oferecidas pela API, mas ainda não são usadas pela interface.
+
+## Estrutura de pastas
+
+```text
+.
+├── db.json
+└── src/
+    ├── api.js
+    ├── App.jsx
+    └── components/
+        ├── FormProduto.jsx
+        └── ListaProdutos.jsx
+```
