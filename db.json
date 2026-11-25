@@ -1,0 +1,22 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Papel sulfite A4",
+      "quantidade": 120,
+      "localizacao": "Corredor A, Prateleira 2"
+    },
+    {
+      "id": 2,
+      "nome": "Mouse óptico USB",
+      "quantidade": 35,
+      "localizacao": "Corredor B, Prateleira 1"
+    },
+    {
+      "id": 3,
+      "nome": "Caneta esferográfica azul",
+      "quantidade": 200,
+      "localizacao": "Corredor A, Prateleira 4"
+    }
+  ]
+}
